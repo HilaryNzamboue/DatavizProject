@@ -1,0 +1,286 @@
+
+{% extends "index.html" %}
+{%load static%}
+`{%block style%}
+<link rel="stylesheet" href="{% static 'rattrapagesFile.css' %}">
+ {%endblock%}
+
+
+
+{% block content %}
+<div  style="display: flex;" >
+  <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}" > {{an}} {{semest}}</a> 
+  <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}/{{cyc}}" > {{cyc}}</a> 
+  
+</div>
+
+<br>
+    <div class="entete">
+        <p><span style="font-weight: bold;">Annee academique:</span> {{an}}</p>
+        <p><span style="font-weight: bold;">Cycle:</span> {{cyc}}</p>
+        <p><span style="font-weight: bold;">Niveau:</span> {{niv}}</p>
+        <p><span style="font-weight: bold;">Filiere:</span> {{bch}}</p>
+
+
+    </div>
+    <br>
+    <br>
+  
+    {%if stat in rattrapage %}
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Fichier de rattrapage</h4>
+          <p class="card-description">
+           
+          </p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    Nom du fichier
+                  </th>
+                  <th>
+                    Annee
+                  </th>
+                  <!-- <th>
+                    Date d'ajout
+                  </th> -->
+                  <th>
+                    Imprimer
+                  </th>
+                  <th>
+                    Exporter
+                  </th>
+              </thead>
+              
+         
+                <tr>
+                  <td>
+                    Rattrapage {{cyc}} {{niv}} {{bch}}
+                  </td>
+                  <td>
+                    {{an}}
+                  </td>
+                  <!-- <td>
+                    {{p.date_save}}
+                  </td> -->
+                  <td>
+                    <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print</a>
+                  </td>
+                  <td>
+                   
+                    {%if liste_R != 0%}
+                    <a  class="btn btn-primary text-white me-0"  href="/Dataviz/export_rattrapages/{{an}}/{{semest}}/{{cyc}}/{{niv}}/{{bch}}"><i class="icon-download"  ></i> Telecharger</a>
+                    {%endif%}
+
+                    {%if liste_R == 0%}
+                    <button type="button"  class="btn btn-primary text-white me-0" ><i class="icon-download"  ></i> Telecharger</button>
+
+                   
+                    {%endif%}
+                  </td>
+                </tr>
+              
+              </tbody>
+            </table>
+           
+          </div>
+        
+        </div>
+      </div>
+     
+    </div>
+    {%if liste_R == 0%}
+    
+    <a href="Dataviz/form" style="color: red; font-style: italic; display: block;  justify-content: center; margin-left: 40%;">Veuillez importer le PV de cette classe!</a>
+
+     {%endif%}
+    {%endif%}
+
+    {%if stat in bilanAnnuel %}
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Bilan</h4>
+          <p class="card-description">
+           
+          </p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    Nom du fichier
+                  </th>
+                  <th>
+                    Annee
+                  </th>
+                  <!-- <th>
+                    Date d'ajout
+                  </th> -->
+                  <th>
+                    Imprimer
+                  </th>
+                  <th>
+                    Exporter
+                  </th>
+              </thead>
+              
+         
+                <tr>
+                  <td>
+                    Bilan {{cyc}} {{niv}} {{bch}}
+                  </td>
+                  <td>
+                    {{an}}
+                  </td>
+                  <!-- <td>
+                    {{p.date_save}}
+                  </td> -->
+                  <td>
+                    <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print</a>
+                  </td>
+                  <td>
+                   
+                  {%if liste_B != 0%}
+                    <a  class="btn btn-primary text-white me-0"  href="/Dataviz/export_bilan_annuel/{{an}}/{{semest}}/{{cyc}}/{{niv}}/{{bch}}"><i class="icon-download" ></i> Telecharger</a>
+                  {%endif%} 
+                  {%if liste_B == 0%}
+                  <button type="button"  class="btn btn-primary text-white me-0" ><i class="icon-download"  ></i> Telecharger</button>
+
+                 
+                  {%endif%}
+                </td>
+
+              
+                  </td>
+                </tr>
+              
+              </tbody>
+            </table>
+         
+          </div>
+        </div>
+      </div>
+    </div>
+    {%if liste_B == 0%}
+    
+    <a href="Dataviz/form" style="color: red; font-style: italic; display: block;  justify-content: center; margin-left: 40%;">Veuillez importer le PV de cette classe!</a>
+
+     {%endif%}
+    {%endif%}
+
+    {%if stat in bc %}
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Bilan de cycle</h4>
+          <p class="card-description">
+           
+          </p>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    Nom du fichier
+                  </th>
+                  <th>
+                    Annee
+                  </th>
+                  <!-- <th>
+                    Date d'ajout
+                  </th> -->
+                  <th>
+                    Imprimer
+                  </th>
+                  <th>
+                    Exporter
+                  </th>
+              </thead>
+              
+         
+                <tr>
+                  <td>
+                    Bilan de Cycle {{cyc}} {{niv}} {{bch}}
+                  </td>
+                  <td>
+                    {{an}}
+                  </td>
+                  <!-- <td>
+                    {{p.date_save}}
+                  </td> -->
+                  <td>
+                    <a href="#" class="btn btn-otline-dark"><i class="icon-printer"></i> Print</a>
+                  </td>
+                  <td>
+                   
+                
+                    <a  class="btn btn-primary text-white me-0"  href="/Dataviz/export_bilan_cycle/{{an}}/{{cyc}}/{{niv}}/{{bch}}"><i class="icon-download" ></i> Telecharger</a>
+                
+                
+                </td>
+
+              
+                  </td>
+                </tr>
+              
+              </tbody>
+            </table>
+         
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    {%endif%}
+
+    {%if stat in statistiques %}
+    <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+      <div class="card card-rounded">
+        <div class="card-body">
+          <div class="row">
+           
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Statistiques</th>
+                  <th scope="col">Taux de reussite</th>
+                  <th scope="col">Taux d'echec</th>
+                  <th scope="col">Totaux</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Semestre 1</th>
+                  <td>{{tRs1}} %</td>
+                  <td>{{tEs1}} %</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <th scope="row">Semestre 2</th>
+                  <td>{{tRs2}} %</td>
+                  <td>{{tEs2}} %</td>
+                  <td>100%</td>
+                </tr>
+                <tr>
+                  <th scope="row">Annuel</th>
+                  <td>{{tRA}} %</td>
+                  <td>{{tEA}} %</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endif%}
+
+
+  {% endblock %}
+
+

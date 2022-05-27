@@ -1,0 +1,109 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+ <div>
+    <div  style="display: flex;" >
+    <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}" > {{an}} {{semest}}</a> 
+    
+</div>
+
+
+ <br>
+ <br>
+ <br>
+ {%if cyc not in cycleLicence %}               
+
+
+ 
+ <div style="display: flex;">
+    <table class="table">
+        <thead>
+          <tr>
+          
+            <th scope="col">Cycle</th>
+            <th scope="col">Niveau</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for n in niveau %}  
+       
+          <tr>
+           
+            <td>{{cyc}}</td>
+            <td>{{n}}</td>
+            <td>
+                <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}/{{cyc}}/{{n}}">Filiere</a>
+            </td>
+          </tr>
+          {%endfor%}
+         
+        </tbody>
+      </table>
+ </div>
+
+  
+  {%endif%}
+
+
+
+
+  {%if cyc in cycleLicence %}               
+
+  
+  <div style="display: flex;">
+
+    <table class="table">
+        <thead>
+          <tr>
+          
+            <th scope="col">Cycle</th>
+            <th scope="col">Niveau</th>
+            <th scope="col">Filiere</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for n in niveau %}  
+            {%for b in branche%} 
+          <tr>
+           
+            <td>{{cyc}}</td>
+            <td>{{n}}</td>
+            <td>{{b}}</td>
+            <td>
+                            
+            {%if semest in sem %}
+            <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}/{{cyc}}/{{n}}/{{b}}/Rattrapages ">Rattrapages </a>
+                {%endif%}
+
+                {%if semest in bl %}
+                
+                <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}/{{cyc}}/{{n}}/{{b}}/Bilans ">Bilans </a>
+                {%endif%}
+                {%if semest in bc %}
+        
+        <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}/{{cyc}}/{{n}}/{{b}}/BilansCycle ">Bilans de cycle </a>
+         {%endif%}
+
+            {%if semest in statist %}
+            <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}/{{cyc}}/{{n}}/{{b}}/Statistiques ">Statistiques </a>
+            {%endif%}
+
+            </td>
+           
+          </tr>
+          {%endfor%}
+          {% endfor %}
+        </tbody>
+      </table>
+ 
+ 
+
+  </div>
+   
+   {%endif%}
+
+  {% endblock %}

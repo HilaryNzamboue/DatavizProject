@@ -1,0 +1,76 @@
+
+{% extends "index.html" %}
+
+
+{% block content %}
+
+   
+     <div  style="display: flex;" >
+      <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}" > {{an}} {{semest}}</a> 
+      <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}/{{cyc}}" > {{cyc}}</a> 
+      
+    </div>
+
+        <br>
+        <br>         
+   
+      <div style="display: flex;">
+
+        <table class="table">
+          <thead>
+            <tr>
+            
+              <th scope="col">Cycle</th>
+              <th scope="col">Niveau</th>
+              <th scope="col">Filiere</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          
+              {%for b in branche%} 
+            <tr>
+             
+              <td>{{cyc}}</td>
+              <td>{{niv}}</td>
+              <td>{{b}}</td>
+              <td>
+                              
+            
+       {%if semest in sem %}
+       <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}/{{cyc}}/{{niv}}/{{b}}/Rattrapages ">Rattrapages </a>
+        {%endif%}
+ 
+        {%if semest in bl %}
+        
+        <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}/{{cyc}}/{{niv}}/{{b}}/Bilans ">Bilans </a>
+         {%endif%}
+         {%if semest in bc %}
+        
+        <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}/{{cyc}}/{{niv}}/{{b}}/BilansCycle ">Bilans de cycle</a>
+         {%endif%}
+ 
+       {%if semest in statist %}
+       <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}/{{cyc}}/{{niv}}/{{b}}/Statistiques ">Statistiques </a>
+       {%endif%}
+ 
+  
+              </td>
+             
+            </tr>
+        
+            {% endfor %}
+          </tbody>
+        </table>
+   
+      </div>
+
+  
+   
+
+
+
+
+{% endblock %}
+

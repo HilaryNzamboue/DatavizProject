@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{%load static%}
+`{%block style%}
+<link rel="stylesheet" href="{% static 'rattrapagesFile.css' %}">
+ {%endblock%}
+
+
+{% block content %}
+
+  
+      <br>
+      <div class="entete">
+        <h3><span style="font-weight: bold;">Liste des cycles</p>
+   
+    </div>
+    <br>
+    <br>
+    
+
+      {% for c in cycle %}  
+
+     
+      <div class="liste">
+        <i class="bi bi-apple"></i>
+     <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}/{{c}}">{{c}}</a>
+      
+      </div>
+
+      
+     
+
+
+     
+
+
+      {% endfor %}
+
+{% endblock %}
+

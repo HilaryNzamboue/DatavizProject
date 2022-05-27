@@ -1,0 +1,84 @@
+{% extends "index.html" %}
+
+{% block content %}
+      {% if niv in tc %}
+      <p> {{an}} {{semest}} {{cyc}} {{niv}} {{stat}}</p>
+      <br>
+          <div class="entete">
+              <p><span style="font-weight: bold;">Annee academique:</span> {{an}}</p>
+              <p><span style="font-weight: bold;">Cycle:</span> {{cyc}}</p>
+              <p><span style="font-weight: bold;">Niveau:</span> {{niv}}</p>
+
+          </div>
+          <br>
+          <br>
+          <div class="table-responsive">
+                  <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      {% for m in matieres %}
+                      <th scope="col">{{m}}</th>
+                      {%endfor%}
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <th scope="row">Noms</th>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                      <td>@mdo</td>
+
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td>@mdo</td>
+
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <br>
+                <div>
+                  <button type="submit" class="btn btn-primary text-white me-0"><i class="icon-upload"></i> Exporter le fichier</button>
+
+                </div>
+          </div>
+
+
+      {% endif %} 
+
+      {% if niv in spc %}
+      <p> {{an}} {{semest}} {{cyc}} {{niv}} kswk</p>
+
+      <p> {{an}} {{semest}} {{cyc}}</p>
+
+      {% for n in niveau %}  
+      <div style="display: flex;">
+      <i class="menu-icon mdi mdi-card-text-outline"></i>
+      <a class="nav-link" href="/Dataviz/bilan-semestriel/{{an}}/{{semest}}/{{cyc}}/{{n}}">{{cyc}} {{n}}</a>
+
+      </div>
+
+
+      {% endfor %}
+
+      {%endif%} 
+
+{% endblock %}
+
